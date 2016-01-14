@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import serial, time
 
 def DataToStr(x,y):
@@ -13,11 +14,11 @@ con = serial.Serial("/dev/ttyAMA0",
 					timeout = 1,)
 print con.portstr
 
-addr = [0,1]
+addr = range(12)
 try:
 	while True:
-			inaddr = int(raw_input("input id from 0 to 1:"))
-			if not(0<= inaddr <=1):
+			inaddr = int(raw_input("input id from 0 to 11:"))
+			if not(inaddr in addr):
 				print("\nimproper id")
 				continue
 			val = int(raw_input("\ninput angle from 3500 to 11500:"))
