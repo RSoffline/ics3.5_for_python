@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import serial, time
 
 def DataToStr(x,y):
