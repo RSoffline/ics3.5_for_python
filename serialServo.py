@@ -45,4 +45,27 @@ class Servo:
 		return self.bef_angle
 
 	def Getpos(self):
-		return self.angle 
+		return self.angle
+
+	def Speed(self, speed):
+		con.flushInput()
+		con.write(ListToStr([(0xc0 | self.addr), 0x03, speed]))
+		rcv = [ord(i) for i in con.read(6)]
+		return rcv[-1]
+
+	def GetSpeed(self):
+		con.flushInput()
+		con.write(ListToStr([(0xa0 | self.addr), 0x03]))
+		rcv = [ord(i) for i in con.read(5)]
+		return rcv[-1]
+
+	def Stretch(self, stretch):
+		con.flushInput()
+		con.write(ListToStr([(0xc0 | self.addr), 0x02, stretch]))
+		rcv = [ord(i) for i in con.read(6)]
+		return rcv[-1]
+
+	def GetStretch(self):
+		con.flushInput()
+		con.write(ListToStr([(0xc0 | self.addr), 0x02]))
+		rcv = [ord(i) for i in con.read(5)]
