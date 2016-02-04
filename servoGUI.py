@@ -69,3 +69,4 @@ addEntry.pack()
 addEntry.bind("<Return>", selectAdd)
 
 root.mainloop()
+serialServo.con.close()
