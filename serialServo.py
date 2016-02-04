@@ -13,6 +13,14 @@ def ListToStr(data):
 	
 	return reduce(add, data)
 
+def setSerial(port):
+	global con
+	con = serial.Serial(port,
+                        115200,
+					    parity = serial.PARITY_EVEN,
+						stopbits = serial.STOPBITS_ONE,
+						timeout = 1)
+					
 con = serial.Serial("/dev/ttyAMA0",
                     115200,
 					parity = serial.PARITY_EVEN,
