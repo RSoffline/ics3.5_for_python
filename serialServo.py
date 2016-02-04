@@ -12,21 +12,21 @@ def ListToStr(data):
 			return chr(x) + chr(y)
 	
 	return reduce(add, data)
-
-def setSerial(port):
+con = None
+def setSerial(port = "/dev/ttyAMA0"):
 	global con
 	con = serial.Serial(port,
                         115200,
 					    parity = serial.PARITY_EVEN,
 						stopbits = serial.STOPBITS_ONE,
 						timeout = 1)
-					
+"""					
 con = serial.Serial("/dev/ttyAMA0",
                     115200,
 					parity = serial.PARITY_EVEN,
 					stopbits = serial.STOPBITS_ONE,
 					timeout = 1)
-
+"""
 class Servo:
 	def __init__(self, addr, angle=None):
 		self.addr = addr
