@@ -11,7 +11,7 @@ def setPos(event):
 	if posBuff.get():
 		value = float(posBuff.get())
 		scale1.set(value)
-		servo(value)
+		servo.Pos(value)
 	
 	
 def selectAdd(event):
@@ -23,18 +23,18 @@ def selectAdd(event):
 
 def setPort(event):
 	value = portBuff.get()
-	serialServo.setSerial(value)
-	
+	#serialServo.setSerial(value)
+	portLabel.configure(text = "selected port")
 
 def servo(x):
 	print add, int(3500 + 8000 * x / 270.0)
 	
 add = 0
-servo = serialServo.Servo(add)
+#servo = serialServo.Servo(add)
 
 root = tk.Tk()
 
-portLabel = tk.Label(root, text = "port")
+portLabel = tk.Label(root, text = "don't select port")
 portLabel.pack()
 portBuff = tk.StringVar()
 portBuff.set("/dev/ttyAMA0")
