@@ -3,34 +3,36 @@ import sys
 import Tkinter as tk
 
 def scaleFunc(event):
-	deg = scale1.get()
-	posBuff.set(str(deg))
-	servo.Pos(deg)
-	
+    deg = scale1.get()
+    posBuff.set(str(deg))
+    servo.Pos(deg)
+    
 def setPos(event):
-	if posBuff.get():
-		value = float(posBuff.get())
-		scale1.set(value)
-		servo.Pos(value)
-	
-	
+    if posBuff.get():
+        value = float(posBuff.get())
+        scale1.set(value)
+        servo.Pos(value)
+    
+    
 def selectAdd(event):
-	global add
-	if buffer.get():
-		add = int(buffer.get())
-		servo.addr = add
-		addLabel.configure(text = "address:"+str(add))
+    global add
+    if buffer.get():
+        add = int(buffer.get())
+        servo.addr = add
+        addLabel.configure(text = "address:"+str(add))
 
 def setPort(event):
-	value = portBuff.get()
-	#serialServo.setSerial(value)
-	portLabel.configure(text = "selected port")
-
+    global servo
+    value = portBuff.get()
+    serialServo.setSerial(value)
+    servo = serialServo.Servo(add)
+    portLabel.configure(text = "selected port")
+"""
 def servo(x):
-	print add, int(3500 + 8000 * x / 270.0)
-	
+    print add, int(3500 + 8000 * x / 270.0)
+""" 
 add = 0
-#servo = serialServo.Servo(add)
+servo = None
 
 root = tk.Tk()
 
@@ -51,10 +53,10 @@ posBuff.set("0")
 
 
 scale1 = tk.Scale(root,
-				  label = "servo position",
-				  orient = "h",
-				  from_ = 0.0, to = 270.0, resolution = 0.1,
-				  command = scaleFunc)
+                  label = "servo position",
+                  orient = "h",
+                  from_ = 0.0, to = 270.0, resolution = 0.1,
+                  command = scaleFunc)
 scale1.pack()
 
 posEntry = tk.Entry(root, textvariable = posBuff)
