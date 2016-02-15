@@ -1,0 +1,9 @@
+使い方
+serialServo.SetSerial(port)
+    サーボモータを接続するポートの設定。raspberry piならデフォルトでuart pinが設定されている。
+    
+serialServo.Servo(address, angle)
+    サーボモータ制御クラス。初期値にモータのアドレスと初期角度を取る。初期角度はなくてもよい。
+    method
+        Pos(angle)
+            0から270のfloatで与える。モータの角度。
