@@ -24,7 +24,7 @@ def selectAdd(event):
 def setPort(event):
     global servo
     value = portBuff.get()
-    serialServo.setSerial(value)
+    serialServo.SetSerial(value)
     servo = serialServo.Servo(add)
     portLabel.configure(text = "selected port")
 """
