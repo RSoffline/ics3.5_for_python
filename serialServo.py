@@ -13,7 +13,7 @@ def ListToStr(data):
 	
 	return reduce(add, data)
 con = None
-def setSerial(port = "/dev/ttyAMA0"):
+def SetSerial(port = "/dev/ttyAMA0"):
 	global con
 	con = serial.Serial(port,
                         115200,
