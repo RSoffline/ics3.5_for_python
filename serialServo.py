@@ -5,13 +5,9 @@ import serial
 import time
 
 def ListToStr(data):
-	def add(x, y):
-		if isinstance(x, str):
-			return x + chr(y)
-		else:
-			return chr(x) + chr(y)
-	
-	return reduce(add, data)
+    strings = reuce(lambda x, y: x + y, map(chr, data))
+	return strings
+    
 con = None
 def SetSerial(port = "/dev/ttyAMA0"):
 	global con
