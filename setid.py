@@ -6,8 +6,8 @@ def DataToStr(x, y):
 		return x + chr(y)
 	else:
 		return chr(x) + chr(y)
-
-con = serial.Serial("/dev/ttyAMA0",
+port = raw_input("port:")
+con = serial.Serial(port,
 					115200,
 					parity = serial.PARITY_EVEN,
 					stopbits = serial.STOPBITS_ONE,
@@ -27,7 +27,7 @@ while True:
 	rcv = [ord(i) for i in con.read(6)]
 	print rcv
 	print "\nnew id:", rcv[-1] & 0x1f
-	
+
 	YorN = raw_input("continue? y/n:")
 	if YorN == "y":
 		raw_input("Please enter when you are ready")
