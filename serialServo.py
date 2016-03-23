@@ -5,7 +5,7 @@ import serial
 import time
 
 def ListToStr(data):
-    strings = reuce(lambda x, y: x + y, map(chr, data))
+    strings = sum(map(chr, data))
 	return strings
     
 con = None
